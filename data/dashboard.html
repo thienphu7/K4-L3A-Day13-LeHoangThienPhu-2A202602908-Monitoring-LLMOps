@@ -1,0 +1,13 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>K4-L3A Monitoring Dashboard</title>
+<style>
+body{font:16px system-ui,sans-serif;background:#101827;color:#e5e7eb;margin:32px}
+h1{margin-bottom:4px}.subtitle{color:#9ca3af;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:16px}
+.panel{background:#1f2937;border:1px solid #374151;border-radius:12px;padding:20px;min-height:130px}
+h2{font-size:18px;margin:0 0 20px}.value{font-size:26px;font-weight:700}
+.unit,.threshold{color:#9ca3af;margin-top:8px}.threshold{border-top:1px solid #374151;padding-top:10px;font-size:13px}
+</style></head><body>
+<h1>K4-L3A Day 13 Monitoring &amp; LLMOps</h1>
+<div class="subtitle">Time range: last 60 minutes · Source: data/logs.jsonl · Refresh: 30 seconds</div>
+<main class="grid"><section class='panel'><h2>Latency</h2><div class='value'>P50 152 / P95 1666 / P99 2196; TTFT P95 50</div><div class='unit'>ms</div><div class='threshold'>SLO P95 &lt;= 3000 ms; TTFT shown</div></section><section class='panel'><h2>Traffic</h2><div class='value'>33 requests</div><div class='unit'>requests / 60 min</div><div class='threshold'>Traffic baseline &gt;= 1 request/min</div></section><section class='panel'><h2>Errors</h2><div class='value'>0.00% errors; retrieval 100.0%</div><div class='unit'>%</div><div class='threshold'>Error rate &lt;= 2%; retrieval &gt;= 90%</div></section><section class='panel'><h2>Cost</h2><div class='value'>$0.0720</div><div class='unit'>USD / 60 min</div><div class='threshold'>Window total &lt;= $2.50</div></section><section class='panel'><h2>Tokens</h2><div class='value'>Input 1,125 / Output 4,577</div><div class='unit'>tokens</div><div class='threshold'>Window total &lt;= 50,000</div></section><section class='panel'><h2>Quality</h2><div class='value'>0.88</div><div class='unit'>score 0-1</div><div class='threshold'>Mean &gt;= 0.75</div></section></main></body></html>

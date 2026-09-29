@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from typing import Any
 
 try:
@@ -34,6 +34,20 @@ except ImportError:  # pragma: no cover - chỉ dùng khi chưa cài requirement
 
 def get_langfuse_client():
     return get_client()
+
+
+@contextmanager
+def start_observation(client: Any, **kwargs: Any):
+    """Start a v4 child observation, while keeping local/test fallbacks safe."""
+    starter = getattr(client, "start_as_current_observation", None)
+    if not callable(starter):
+        with nullcontext(None) as observation:
+            yield observation
+        return
+
+    observation_context = starter(**kwargs)
+    with observation_context as observation:
+        yield observation
 
 
 def tracing_enabled() -> bool:
